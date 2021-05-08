@@ -35,6 +35,6 @@ def articles_list():
 def articles_details(art_id: int):
     try:
         ARTICLE = ARTICLES[art_id - 1]
-    except KeyError:
+    except (KeyError, IndexError):
         raise NotFound(f"Article #{art_id} doesn't exist!")
     return render_template('articles/detail.html', article=ARTICLE)
